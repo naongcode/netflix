@@ -1,12 +1,3 @@
-<<<<<<< HEAD
-import React from 'react'
-
-export default function Banner() {
-  return (
-    <div>Banner</div>
-  )
-}
-=======
 import axios from "../api/axios";
 import React, { useEffect, useState } from "react";
 import requests from "../api/request";
@@ -123,4 +114,3 @@ const HomeContainer = styled.div`
     width: 100%;
     height: 100%;
 `;
->>>>>>> f36d7411dab454fb5fa0e94d74b4c67e52d338e8
