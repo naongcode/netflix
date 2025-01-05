@@ -1,5 +1,6 @@
 import axios from '../api/axios';
 import React, {useEffect, useState} from 'react'
+import "./Row.css"
 
 // <Row />에 들어있는 props(속성)를 가져옴
 // 영화정보 가져올 함수 실행 fetchMovieData()
@@ -21,7 +22,7 @@ export default function Row({ islargeRow, title, id, fetchUrl}) {
   }
   
   return (
-    <section>
+    <section className='row'>
       <h2>{title}</h2>
 
       {/* 슬라이더 */}
@@ -37,7 +38,7 @@ export default function Row({ islargeRow, title, id, fetchUrl}) {
               key={movie.id}
               className={`row__poster ${islargeRow && "row__posterLarge"}`}
               // isLargeRow가 적용되어 있으면 poster_path(큰거)아니면 backdrop_path(작은거)
-              src={`https://image.tmdb.org/t/p/original/${islargeRow ? movie.poster_path:movie.backdrop_path}`}
+              src={`https://image.tmdb.org/t/p/original/${islargeRow ? movie.poster_path : movie.backdrop_path}`}
               loading="lazy"
               alt={movie.name}
               />
