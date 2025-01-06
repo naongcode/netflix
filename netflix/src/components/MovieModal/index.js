@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import './MovieModal.css'
+import useOnClickOutside from '../hooks/useOnClickOutside';
 
 function MovieModal({
     backdrop_path,
@@ -21,6 +22,8 @@ function MovieModal({
                     `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=93da99847bf7cc833a60063441ad2740`
                   );
 
+                // console.log('movieid:',movieId)
+
                 const data = await response.json();
                 const trailer = data.results.find((video) => video.site === "YouTube" && video.type === "Trailer");
                 setTrailerKey(trailer?.key || null);
@@ -32,15 +35,14 @@ function MovieModal({
         fetchTrailer();
     }, [movieId])
 
+    const ref = useRef();
+    useOnClickOutside(ref, ()=>{setModalOpen(false)})
+
   return (
-    <div className='presentation' role="presentation" onClick={() => { console.log('Background clicked'); setModalOpen(false)}}>
-        <div
-    className="wrapper-modal"
-    onClick={(e) => {
-        e.stopPropagation(); // 이벤트 전파 차단
-    }}
->
-            <div className="modal">
+    <div className='presentation' role="presentation">
+        <div className="wrapper-modal" >
+        {/* onClick={(e) => {e.stopPropagation()}} */}
+            <div className="modal" ref={ref}>
                 <span onClick={() => setModalOpen(false)} className="modal-close">
                     X
                 </span>
