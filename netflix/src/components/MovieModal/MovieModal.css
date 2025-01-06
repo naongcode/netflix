@@ -50,18 +50,29 @@
 }
 
 .wrapper-modal {
-    position: fixed;
-    inset: 0px;
-    background-color: rgba(0, 0, 0, 0.71);
-    -webkit-tap-highlight-color: transparent;
+    position: relative; /* 기존 fixed 제거 */
     display: flex;
     justify-content: center;
+    align-items: center;
+    background-color: transparent; /* 투명 배경 */
 }
 
+
 .presentation {
-    z-index: 1200;
-    position: absolute;
+    z-index: 9999;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: auto; /* 클릭 이벤트 활성화 */
 }
+
+
 
 .modal-close {
     position: absolute;
@@ -71,6 +82,20 @@
     z-index: 1000;
     color: white;
 }
+
+.modal_trailer {
+    width: 100%;
+    height: 400px;
+    margin-top: 20px;
+    border-radius: 8px;
+  }
+  
+  .modal_no-trailer {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #999;
+  }
+  
 
 @media screen and (max-height: 768px){
     .wrapper-modal {
