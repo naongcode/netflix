@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './MovieModal.css'
 
 function MovieModal({
@@ -9,11 +9,37 @@ function MovieModal({
     release_date,
     first_air_date,
     vote_average,
-    setModalOpen
+    setModalOpen,
+    movieId,
 }) {
+    const [trailerKey, setTrailerKey] = useState(null);
+
+    useEffect(() => {
+        const fetchTrailer = async () => {
+            try {
+                const response = await fetch(
+                    `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=93da99847bf7cc833a60063441ad2740`
+                  );
+
+                const data = await response.json();
+                const trailer = data.results.find((video) => video.site === "YouTube" && video.type === "Trailer");
+                setTrailerKey(trailer?.key || null);
+            } catch(error) {
+                console.log(error);
+            }
+        }
+
+        fetchTrailer();
+    }, [movieId])
+
   return (
-    <div className='presentation' role="presentation">
-        <div className="wrapper-modal">
+    <div className='presentation' role="presentation" onClick={() => { console.log('Background clicked'); setModalOpen(false)}}>
+        <div
+    className="wrapper-modal"
+    onClick={(e) => {
+        e.stopPropagation(); // 이벤트 전파 차단
+    }}
+>
             <div className="modal">
                 <span onClick={() => setModalOpen(false)} className="modal-close">
                     X
@@ -29,6 +55,17 @@ function MovieModal({
                     <h2 className="modal_title">{title ? title : name }</h2>
                     <p className="modal_overview">평점 : {vote_average}</p>
                     <p className="modal_overview">{overview}</p>
+
+                    {
+                        trailerKey ? (<iframe
+                            className="modal_trailer"
+                            src={`https://www.youtube.com/embed/${trailerKey}`}
+                            frameBorder="0"
+                            allow="autoplay; encrypted-media"
+                            allowFullScreen
+                            title="movie trailer"
+                          ></iframe>) : (<p className="modal_no-trailer">트레일러가 없습니다.</p>) 
+                    }
 
                 </div>
             </div>
