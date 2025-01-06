@@ -42,8 +42,7 @@ export default function SearchPage() {
               "https://image.tmdb.org/t/p/w500" + movie.backdrop_path;
             return (
               <div className="movie" key={movie.id}>
-                <div
-                  onClick={() => navigate(`/${movie.id}`)}
+                <div onClick={() => navigate(`/${movie.id}`)}
                   className="movie__column-poster"
                 >
                   <img
