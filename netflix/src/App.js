@@ -21,17 +21,17 @@ function Layout () {
 function App() {
    return(
       <div className='App'>
-      <BrowserRouter>
-      <Routes> 
-         {/* 레이아웃 적용 */}
-      <Route path="/" element={<Layout />} >
-         <Route index element={<MainPage />} />
-         <Route path=":movieId" element={<DetailPage />} />
-         <Route path="search" element={<SearchPage />} />
-      </Route>
-      </Routes>
-   </BrowserRouter>
-   </div>
+         <BrowserRouter>
+            <Routes> 
+               {/* 레이아웃 적용 */}
+               <Route path="/" element={<Layout />} >
+                  <Route index element={<MainPage />} />
+                  <Route path=":movieId" element={<DetailPage />} />
+                  <Route path="search" element={<SearchPage />} />
+               </Route>
+            </Routes>
+         </BrowserRouter>
+      </div>
    )
 }
 export default App;
