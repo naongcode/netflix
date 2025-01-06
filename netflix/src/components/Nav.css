@@ -10,8 +10,19 @@
     align-items: center;
     transition-timing-function: ease-in;
     transition: all 0.5s;
+    z-index: 10000;
 }
-
+.nav__input{
+    position: fixed;
+    left:50%;
+    transform: translate(-50%,0);
+    background-color: #000000c7;
+    opacity: 0.7;
+    border-radius: 5px;
+    padding: 5px;
+    border: none;
+    color:white;
+}
 .nav__black{
     background-color: black;
 }
