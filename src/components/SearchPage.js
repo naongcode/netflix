@@ -3,10 +3,13 @@ import { useLocation, useNavigate } from "react-router-dom";
 import axios from '../api/axios'
 import { useDebounce } from "./hooks/useDebounce";
 import "./SearchPage.css";
+import MovieModal from "./MovieModal";
 
 export default function SearchPage() {
   const navigate = useNavigate();
   const [searchResults, setSearchResults] = useState([]);
+  const [modalOpen, setModalOpen] = useState(false)
+  const [movieSelected, setMovieSelected] = useState(null);
   const useQuery = () => {
     return new URLSearchParams(useLocation().search);
   };
@@ -42,7 +45,7 @@ export default function SearchPage() {
               "https://image.tmdb.org/t/p/w500" + movie.backdrop_path;
             return (
               <div className="movie" key={movie.id}>
-                <div onClick={() => navigate(`/${movie.id}`)}
+                <div onClick={() => {setModalOpen(true);setMovieSelected(movie)}}
                   className="movie__column-poster"
                 >
                   <img
@@ -55,6 +58,11 @@ export default function SearchPage() {
             );
           }
         })}
+              {modalOpen && 
+        (<MovieModal 
+          movieId={movieSelected.id} 
+          {...movieSelected} 
+          setModalOpen={setModalOpen}/>)}
       </section>
     ) : (
       <section className="no-results">
