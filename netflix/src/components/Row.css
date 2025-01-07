@@ -134,7 +134,7 @@ h2 {
     }
 }
 
-/* .swiper-pagination {
+.swiper-pagination {
     text-align: right !important;
 }
 
@@ -158,4 +158,5 @@ h2 {
 .swiper-button-next:after, .swiper-button-prev:after{
     font-size: 1.3rem !important;
     font-weight: 600 !important;
-} */
+} 
+
