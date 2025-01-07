@@ -21,7 +21,7 @@ export default function DetailPage() {
     return (
     <section> 
         <img
-            className='modal__poster-img' /*poster 형태가 안됨 */
+            className='modal_poster-img'
             src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
             alt="poster"
         />
