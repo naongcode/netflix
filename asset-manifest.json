@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/netfilx/static/css/main.ec162f46.css",
+    "main.js": "/netfilx/static/js/main.c18fd35c.js",
+    "index.html": "/netfilx/index.html",
+    "main.ec162f46.css.map": "/netfilx/static/css/main.ec162f46.css.map",
+    "main.c18fd35c.js.map": "/netfilx/static/js/main.c18fd35c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ec162f46.css",
+    "static/js/main.c18fd35c.js"
+  ]
+}
