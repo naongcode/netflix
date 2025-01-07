@@ -21,7 +21,6 @@ function Layout () {
 function App() {
    return(
       <div className='App'>
-         <BrowserRouter basename='netflix'>
             <Routes> 
                {/* 레이아웃 적용 */}
                <Route path="/" element={<Layout />} >
@@ -30,7 +29,6 @@ function App() {
                   <Route path="search" element={<SearchPage />} />
                </Route>
             </Routes>
-         </BrowserRouter>
       </div>
    )
 }
