@@ -32,7 +32,7 @@ export default function Nav() {
                 alt="Netflix logo"
                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/200px-Netflix_2015_logo.svg.png"
                 className='nav__logo'
-                onClick={() => (window.location.href = "/")} // 홈으로 이동
+                onClick={() => (window.location.href = "/netflix")} // 홈으로 이동
                 />
                 <input className='nav__input'
                 value={searchValue}
